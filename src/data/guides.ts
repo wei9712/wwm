@@ -1,6 +1,5 @@
 ﻿import type { Category, FaqItem, GuideArticle } from '../types/guide';
 
-const uploadBase = `${import.meta.env.BASE_URL}uploads/`;
 
 export const categories: Category[] = [
   { id: 'newbie', name: '新手入門', description: '剛開始玩先看這區，快速打好基礎。' },
