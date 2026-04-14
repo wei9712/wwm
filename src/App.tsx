@@ -52,8 +52,8 @@ function App() {
         {route.page === 'home' && (
           <>
             <section className="hero">
-              <p className="hero-eyebrow">新手導向攻略站</p>
-              <h1>冒險攻略快速入口</h1>
+              <p className="hero-eyebrow">新手小筆記</p>
+              <h1>筆記快速入口</h1>
               <p>從新手到進階，先選分類再看文章。</p>
               <button className="hero-cta" onClick={() => navigateTo('/category/newbie')}>
                 先看新手入門
