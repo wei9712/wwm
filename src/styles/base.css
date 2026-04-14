@@ -1,0 +1,38 @@
+﻿:root {
+  --bg-main: #f5efe2;
+  --bg-soft: #fff8ed;
+  --panel: #fffdf8;
+  --text-main: #1e1d18;
+  --text-muted: #5b564d;
+  --line: #e5d7bf;
+  --brand: #c96f2d;
+  --brand-strong: #a85113;
+  --accent: #1e7179;
+  --shadow: 0 12px 35px rgba(32, 26, 18, 0.12);
+  font-family: 'Noto Sans TC', 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+  line-height: 1.6;
+  font-weight: 400;
+  color: var(--text-main);
+  background: radial-gradient(circle at 20% 0%, #fff8ed 0%, var(--bg-main) 48%, #efe4d0 100%);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  color: var(--text-main);
+  background: transparent;
+}
+
+button {
+  font-family: inherit;
+}
