@@ -4,7 +4,7 @@ export function Header(): JSX.Element {
   return (
     <header className="site-header">
       <button className="brand-button" onClick={() => navigateTo('/')}>
-        冒險攻略站
+        花花師門筆記
       </button>
       <nav className="nav-menu">
         <button onClick={() => navigateTo('/')}>首頁</button>

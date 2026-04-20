@@ -1,19 +1,57 @@
 ﻿import type { Category, FaqItem, GuideArticle } from '../types/guide';
 
-
 export const categories: Category[] = [
-  { id: 'newbie', name: '新手入門', description: '剛開始玩先看這區，快速打好基礎。' },
-  { id: 'build', name: '養成與配隊', description: '角色養成、資源分配、隊伍組合。' },
-  { id: 'combat', name: '戰鬥技巧', description: '關卡應對、Boss 觀念、操作細節。' },
+  { id: 'weekbuild', name: '每周必買', description: '角色養成、資源分配。' },
+  { id: 'build', name: '角色養成', description: '角色養成、資源分配。' },
   { id: 'explore', name: '地圖探索', description: '跑圖路線、隱藏點位、收集建議。' },
-  { id: 'quest', name: '任務流程', description: '主線、每日、活動任務效率解法。' },
   { id: 'faq', name: '常見問題', description: '最常被問的問題集中整理。' }
 ];
 
 export const articles: GuideArticle[] = [
   {
+    id: 'weekly-faction',
+    categoryId: 'weekbuild',
+    title: '賽季商店必買清單',
+    summary: '取得養成材料。',
+    tags: ['強化', '養成'],
+    highlights: [],
+    steps: [],
+    tip: '裝備養成請購買當下符合等級的箱子，嘯玉等武庫強化道具也請購買當下適合等級。',
+    content: [
+      {
+        type: 'text',
+        text: '賽季商店必買清單為紅框，黃框為選買，可買可不買不影響強度。其餘道具看個人進行購買。'
+      },
+      {
+        type: 'carousel',
+        images: [
+          {
+            src: `${import.meta.env.BASE_URL}uploads/賽季商店01.png`,
+            alt: '戰鬥養成',
+            caption: '戰鬥養成'
+          },
+          {
+            src: `${import.meta.env.BASE_URL}uploads/賽季商店02.png`,
+            alt: '裝備寶匣',
+            caption: '裝備寶匣'
+          },
+          {
+            src: `${import.meta.env.BASE_URL}uploads/賽季商店03.png`,
+            alt: '金裝兌換',
+            caption: '金裝兌換'
+          },
+          {
+            src: `${import.meta.env.BASE_URL}uploads/賽季商店04.png`,
+            alt: '營生養成',
+            caption: '營生養成'
+          }
+        ]
+      }
+    ]
+  },
+  {
     id: 'weekly-core',
-    categoryId: 'quest',
+    categoryId: 'weekbuild',
     title: '每週必做總覽',
     summary: '所有有「每週上限」的內容優先完成。',
     tags: ['每週', '核心'],
@@ -22,24 +60,28 @@ export const articles: GuideArticle[] = [
     tip: '任何「每週限制」內容都不能漏。'
   },
   {
-    id: 'weekly-dungeon',
-    categoryId: 'combat',
-    title: '每週副本（俠境 / 共伐）',
-    summary: '核心裝備與材料來源。',
-    tags: ['副本', '每週'],
-    highlights: ['俠境必打', '群力共伐有次數', '掉落裝備'],
-    steps: ['打普通俠境', '打百業俠境', '完成共伐次數'],
-    tip: '副本是戰力來源，優先最高。'
-  },
-  {
-    id: 'weekly-faction',
+    id: 'weekly-faction-build',
     categoryId: 'build',
-    title: '百業 / 活躍資源',
+    title: '百業活動與商店',
     summary: '穩定取得貨幣與養成材料。',
-    tags: ['百業', '資源'],
-    highlights: ['百業寶銖有上限', '活躍必解', '長期資源來源'],
-    steps: ['完成百業任務', '累積活躍值', '領取每週獎勵'],
-    tip: '這是長期養成差距來源。'
+    tags: ['百業', '百業派對'],
+    highlights: [],
+    steps: [],
+    tip: '',
+    content: [
+      { type: 'text', text: '須先加入百業。' },
+      {
+        type: 'carousel',
+        images: [
+          {
+            src: `${import.meta.env.BASE_URL}uploads/百頁活動.png`,
+            alt: '百頁活動任務',
+            caption: '百頁活動任務'
+          }
+        ]
+      },
+      { type: 'text', text: '點進去完成相對應任務。' }
+    ]
   },
   {
     id: 'weekly-shop',
@@ -52,16 +94,6 @@ export const articles: GuideArticle[] = [
     tip: '裝備匣與養成材料優先。'
   },
   {
-    id: 'weekly-trial',
-    categoryId: 'combat',
-    title: '流派試煉',
-    summary: '固定次數的戰力成長來源。',
-    tags: ['試煉', '每週'],
-    highlights: ['每週5次', '可累積', '掉落重要材料'],
-    steps: ['確認剩餘次數', '集中刷完', '避免浪費'],
-    tip: '可累積但不要拖太久。'
-  },
-  {
     id: 'weekly-trade',
     categoryId: 'explore',
     title: '跑商與經濟玩法',
@@ -70,26 +102,6 @@ export const articles: GuideArticle[] = [
     highlights: ['價格波動', '低買高賣', '需觀察時間'],
     steps: ['觀察價格', '低點買入', '高點賣出'],
     tip: '固定時間操作收益最高。'
-  },
-  {
-    id: 'weekly-horse',
-    categoryId: 'quest',
-    title: '抓馬與販售',
-    summary: '每週有限次數資源來源。',
-    tags: ['抓馬', '每週'],
-    highlights: ['每日可抓', '每週販售上限', '換貨幣'],
-    steps: ['抓高價馬', '累積數量', '週內賣出'],
-    tip: '只賣高價值，避免浪費次數。'
-  },
-  {
-    id: 'weekly-energy',
-    categoryId: 'build',
-    title: '體力與心力管理',
-    summary: '每週資源產出核心。',
-    tags: ['體力', '心力'],
-    highlights: ['體力有上限', '心力影響副本', '需規劃使用'],
-    steps: ['避免溢出', '優先副本使用', '剩餘做材料'],
-    tip: '資源浪費=進度落後。'
   }
 ];
 

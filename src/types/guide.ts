@@ -21,6 +21,12 @@ export type FaqItem = {
   a: string;
 };
 
+export type ArticleImageItem = {
+  src: string;
+  alt: string;
+  caption?: string;
+};
+
 export type ArticleContentBlock =
   | {
       type: 'text';
@@ -31,4 +37,8 @@ export type ArticleContentBlock =
       src: string;
       alt: string;
       caption?: string;
+    }
+  | {
+      type: 'carousel';
+      images: ArticleImageItem[];
     };

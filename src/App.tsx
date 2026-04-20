@@ -1,5 +1,6 @@
 ﻿import { useEffect, useMemo, useState } from 'react';
 import { ArticleCard } from './components/ArticleCard';
+import { ArticleCarousel } from './components/ArticleCarousel';
 import { CategoryCard } from './components/CategoryCard';
 import { Footer } from './components/Footer';
 import { Header } from './components/Header';
@@ -126,22 +127,49 @@ function App() {
 
             {selectedArticle.content && selectedArticle.content.length > 0 ? (
               <section className="article-content">
-                {selectedArticle.content.map((block, index) => {
-                  if (block.type === 'text') {
-                    return (
-                      <p key={`text-${index}`} className="article-paragraph">
-                        {block.text}
-                      </p>
-                    );
+                {(() => {
+                  const renderedBlocks: JSX.Element[] = [];
+
+                  for (let index = 0; index < selectedArticle.content.length; index += 1) {
+                    const block = selectedArticle.content[index];
+
+                    if (block.type === 'text') {
+                      renderedBlocks.push(
+                        <p key={`text-${index}`} className="article-paragraph">
+                          {block.text}
+                        </p>
+                      );
+                      continue;
+                    }
+
+                    if (block.type === 'carousel') {
+                      renderedBlocks.push(<ArticleCarousel key={`carousel-${index}`} images={block.images} />);
+                      continue;
+                    }
+
+                    const groupedImages = [{ src: block.src, alt: block.alt, caption: block.caption }];
+                    let pointer = index + 1;
+
+                    while (pointer < selectedArticle.content.length) {
+                      const imageBlock = selectedArticle.content[pointer];
+                      if (imageBlock.type !== 'image') {
+                        break;
+                      }
+
+                      groupedImages.push({
+                        src: imageBlock.src,
+                        alt: imageBlock.alt,
+                        caption: imageBlock.caption
+                      });
+                      pointer += 1;
+                    }
+
+                    renderedBlocks.push(<ArticleCarousel key={`image-group-${index}`} images={groupedImages} />);
+                    index = pointer - 1;
                   }
 
-                  return (
-                    <figure key={`image-${index}`} className="article-image-block">
-                      <img src={block.src} alt={block.alt} loading="lazy" />
-                      {block.caption ? <figcaption>{block.caption}</figcaption> : null}
-                    </figure>
-                  );
-                })}
+                  return renderedBlocks;
+                })()}
               </section>
             ) : (
               <>
